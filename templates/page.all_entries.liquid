@@ -1,7 +1,9 @@
+
+<div style="width:200px;border:1px">
 {% for info in shop.metaobjects.extra_info.values %}
 <h1>{{ info.name }}</h1>
 <p>{{ info.description }}</p>
 <a href="{{ info.url }}"><img src="{{ info.img | img_url: 'master'}}" height="150" width="150"/></a>
 <button><a href="{{ info.url }}">{{ info.button }}</a></button>
-
 {% endfor %}
+</div>
