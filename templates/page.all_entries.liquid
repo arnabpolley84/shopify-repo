@@ -1,7 +1,7 @@
 
 <div style="width:500px;border:1px solid pink;display:flex;gap:20px;margin:0 auto;">
 {% for info in shop.metaobjects.extra_info.values %}
-    <div>
+    <div style="width:100px;"">
         <h1>{{ info.name }}</h1>
         <p>{{ info.description }}</p>
         <a href="{{ info.url }}"><img src="{{ info.img | img_url: 'master'}}" height="150" width="150"/></a>
