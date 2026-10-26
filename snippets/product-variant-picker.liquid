@@ -8,6 +8,23 @@
   Usage:
   {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
 {% endcomment %}
+ <style>
+ul.variant-sec {
+    list-style: none;
+    display: flex;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+}
+
+.variant-sec-item {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    border: 5px solid black;
+    outline: 2px solid yellow;
+}
+  </style>
  {% if product.metafields.custom.variant_color.value %}
     <p>Color:</p>
     <ul class="variant-sec">
