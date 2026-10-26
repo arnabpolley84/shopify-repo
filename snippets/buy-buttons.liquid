@@ -97,7 +97,9 @@
             {{ form | payment_button }}
           {%- endif -%}
         </div>
-        <p>Test</p>
+        {% if product.metafields.custom.variant_color.value %}
+          
+        {% endif %}
       {%- endform -%}
     </product-form>
   {%- else -%}
