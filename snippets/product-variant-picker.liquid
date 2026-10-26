@@ -10,9 +10,11 @@
 {% endcomment %}
  {% if product.metafields.custom.variant_color.value %}
     <p>Color:</p>
+    <ul>
     {% for color in product.metafields.custom.variant_color.value %}
-      {{ color }}
+      <li>{{ color }}</li>
     {% endfor %}
+  </ul>
  {% endif %}
  
 {%- unless product.has_only_default_variant -%}
