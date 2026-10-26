@@ -90,13 +90,13 @@
       ],
       "settings": {
         "enable_sticky_info": true,
-        "color_scheme": "",
-        "media_size": "small",
+        "color_scheme": "scheme-5",
+        "media_size": "medium",
         "constrain_to_viewport": false,
         "media_fit": "cover",
         "gallery_layout": "thumbnail_slider",
         "mobile_thumbnails": "hide",
-        "media_position": "right",
+        "media_position": "left",
         "image_zoom": "lightbox",
         "hide_variants": true,
         "enable_video_looping": false,
@@ -175,6 +175,7 @@
         "text_dW4VP3",
         "button_eNLmKk"
       ],
+      "disabled": true,
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
         "image": "{{ product.metafields.custom.extra_info_meta.value.img.value }}",
