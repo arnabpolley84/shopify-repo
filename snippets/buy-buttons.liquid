@@ -98,7 +98,7 @@
           {%- endif -%}
         </div>
         {% if product.metafields.custom.variant_color.value %}
-          <input type="hidden" name="properties[color]" value="{{ product.metafields.custom.variant_color.value | first }}">
+          <input type="hidden" name="properties[color]" class="selected-variant-color" value="{{ product.metafields.custom.variant_color.value | first }}">
         {% endif %}
       {%- endform -%}
     </product-form>
