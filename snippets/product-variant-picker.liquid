@@ -10,9 +10,9 @@
 {% endcomment %}
  {% if product.metafields.custom.variant_color.value %}
     <p>Color:</p>
-    <ul>
+    <ul class="variant-sec">
     {% for color in product.metafields.custom.variant_color.value %}
-      <li style="background-color:{{ color }}"></li>
+      <li class="variant-sec-item" style="background-color:{{ color }}"></li>
     {% endfor %}
   </ul>
  {% endif %}
