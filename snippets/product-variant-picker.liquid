@@ -9,11 +9,12 @@
   {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
 {% endcomment %}
  {% if product.metafields.custom.variant_color.value %}
+    <p>Color:</p>
     {% for color in product.metafields.custom.variant_color.value %}
       {{ color }}
     {% endfor %}
  {% endif %}
- <p>Color:</p>
+ 
 {%- unless product.has_only_default_variant -%}
   <variant-selects
     id="variant-selects-{{ section.id }}"
