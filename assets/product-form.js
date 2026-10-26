@@ -189,4 +189,63 @@ if (!customElements.get('product-form')) {
       }
     }
   );
+
+  
+  document.addEventListener('DOMContentLoaded', function () {
+    const swatches = document.querySelectorAll('.variant-sec-item');
+    const colorInput = document.querySelector('#selected-variant-color');
+
+    if (!swatches.length || !colorInput) return;
+
+    let selectedColor =
+      (document.querySelector('.variant-sec-item.active') || swatches[0])
+        .dataset.color || '';
+
+    colorInput.value = selectedColor;
+
+    swatches.forEach(swatch => {
+      swatch.addEventListener('click', function () {
+        swatches.forEach(s => s.classList.remove('active'));
+        this.classList.add('active');
+
+        selectedColor = this.dataset.color || '';
+        colorInput.value = selectedColor;
+      });
+    });
+
+    const originalFetch = window.fetch;
+
+    window.fetch = function (...args) {
+      const url = args[0];
+      const options = args[1] || {};
+
+      if (
+        typeof url === 'string' &&
+        url.includes('/cart/add') &&
+        selectedColor
+      ) {
+        if (options.body instanceof FormData) {
+          options.body.set('properties[color]', selectedColor);
+
+        } else if (typeof options.body === 'string') {
+          try {
+            const body = JSON.parse(options.body);
+
+            body.properties = {
+              ...body.properties,
+              color: selectedColor
+            };
+
+            options.body = JSON.stringify(body);
+          } catch (e) {}
+
+        } else if (options.body instanceof URLSearchParams) {
+          options.body.set('properties[color]', selectedColor);
+        }
+      }
+
+      return originalFetch.apply(this, args);
+    };
+  });
+
 }
