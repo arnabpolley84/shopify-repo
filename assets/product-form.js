@@ -192,60 +192,30 @@ if (!customElements.get('product-form')) {
 
   
   document.addEventListener('DOMContentLoaded', function () {
-    const swatches = document.querySelectorAll('.variant-sec-item');
-    const colorInput = document.querySelector('#selected-variant-color');
 
-    if (!swatches.length || !colorInput) return;
+  const swatches = document.querySelectorAll('.variant-sec-item');
+  const colorInput = document.querySelector('#selected-variant-color');
 
-    let selectedColor =
-      (document.querySelector('.variant-sec-item.active') || swatches[0])
-        .dataset.color || '';
+  if (!swatches.length || !colorInput) return;
 
-    colorInput.value = selectedColor;
+  const activeSwatch = document.querySelector('.variant-sec-item.active') || swatches[0];
+  colorInput.value = activeSwatch.dataset.color || '';
 
-    swatches.forEach(swatch => {
-      swatch.addEventListener('click', function () {
-        swatches.forEach(s => s.classList.remove('active'));
-        this.classList.add('active');
+  swatches.forEach(function (swatch) {
+    swatch.addEventListener('click', function () {
 
-        selectedColor = this.dataset.color || '';
-        colorInput.value = selectedColor;
-      });
+      // Remove active from the currently active swatch
+      document.querySelector('.variant-sec-item.active')?.classList.remove('active');
+
+      // Activate the clicked swatch
+      this.classList.add('active');
+
+      // Update the hidden input
+      colorInput.value = this.dataset.color || '';
+
     });
-
-    const originalFetch = window.fetch;
-
-    window.fetch = function (...args) {
-      const url = args[0];
-      const options = args[1] || {};
-
-      if (
-        typeof url === 'string' &&
-        url.includes('/cart/add') &&
-        selectedColor
-      ) {
-        if (options.body instanceof FormData) {
-          options.body.set('properties[color]', selectedColor);
-
-        } else if (typeof options.body === 'string') {
-          try {
-            const body = JSON.parse(options.body);
-
-            body.properties = {
-              ...body.properties,
-              color: selectedColor
-            };
-
-            options.body = JSON.stringify(body);
-          } catch (e) {}
-
-        } else if (options.body instanceof URLSearchParams) {
-          options.body.set('properties[color]', selectedColor);
-        }
-      }
-
-      return originalFetch.apply(this, args);
-    };
   });
+
+});
 
 }
