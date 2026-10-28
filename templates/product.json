@@ -18,7 +18,19 @@
         },
         "price": {
           "type": "price",
+          "disabled": true,
           "settings": {}
+        },
+        "infinite_options_app_block_price_6QtA7t": {
+          "type": "shopify://apps/infinite-options/blocks/app-block-price/7e73b6f9-82b0-45f5-9b9b-04f446ba1a9b",
+          "settings": {
+            "color": "#000000",
+            "font": "Assistant, sans-serif",
+            "font_size": "18px",
+            "compare_at_color": "#999999",
+            "compare_at_font_size": "14px",
+            "compare_at_position": "before"
+          }
         },
         "description": {
           "type": "description",
@@ -83,6 +95,7 @@
       "block_order": [
         "title",
         "price",
+        "infinite_options_app_block_price_6QtA7t",
         "description",
         "collapsible-row-1",
         "collapsible-row-0",
