@@ -18,7 +18,6 @@
         },
         "price": {
           "type": "price",
-          "disabled": true,
           "settings": {}
         },
         "infinite_options_app_block_price_6QtA7t": {
